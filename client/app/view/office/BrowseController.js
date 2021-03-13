@@ -9,11 +9,14 @@ Ext.define('App.view.office.BrowseController', {
     },
 
     refresh: function() {
+        console.log("client->app->view->office->BrowseController->refresh");
+        
         var vm = this.getViewModel();
         vm.getStore('countries').reload();
     },
 
     onCreate: function() {
+        console.log("client->app->view->office->BrowseController->onCreate");
         this.redirectTo('office/create');
     }
 });

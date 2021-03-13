@@ -9,6 +9,8 @@ Ext.define('App.model.Action', {
     ],
 
     toUrl: function() {
+        console.log("client->app->model->Action->toUrl");
+        
         return Ext.String.format('person/{0}', this.getRecipient().get('username'));
     },
 

@@ -32,6 +32,8 @@ Ext.define('App.view.widgets.Browse', {
     layout: 'fit',
 
     reset: function() {
+        console.log("client->app->view->widgets->Browse->reset");
+        
         this.fireEvent('reset');
         return this;
     }

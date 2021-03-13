@@ -9,6 +9,8 @@ Ext.define('App.view.organization.WizardController', {
     },
 
     refresh: function() {
+        console.log("client->app->view->organization->WizardController->refresh");
+        
         this.getViewModel().getStore('managers').reload();
     }
 });

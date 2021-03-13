@@ -3,6 +3,8 @@ Ext.define('App.view.tablet.organization.BrowseController', {
     alias: 'controller.tablet-organizationbrowse',
 
     onCreate: function() {
+        console.log("client->app->view->tablet->organization->BrowseController->onCreate");
+        
         // The creation form can be accessed either by clicking the "create" button (dialog)
         // or via the #organization/create url (page) - default config matches the "page"
         // view. Note that this dialog will be destroyed on close.

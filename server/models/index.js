@@ -48,19 +48,34 @@ config.operatorsAliases = {
     $values: Op.values,
     $col: Op.col
 };
+// LP Debug
+console.log("Start LP_Debug");
+console.log("config.database");
+console.log(config.database);
+console.log("config.username");
+console.log(config.username);
+console.log("config.password");
+console.log(config.password);
+console.log("config");
+console.log(config);
+console.log("End LP_Debug");
 var sequelize = new Sequelize(config.database, config.username, config.password, config);
 var db = {};
 
 fs.readdirSync(__dirname)
-    .filter(function(file) {
-        return (file.indexOf(".") !== 0) && (file !== "index.js");
-    })
-    .forEach(function(file) {
-        var model = sequelize.import(path.join(__dirname, file));
-        db[model.name] = model;
-    });
 
-Object.keys(db).forEach(function(modelName) {
+        .filter(function (file) {
+            console.log("server->models->index->fs.readdirSync->.filter");
+            return (file.indexOf(".") !== 0) && (file !== "index.js");
+        })
+        .forEach(function (file) {
+            console.log("server->models->index->fs.readdirSync->..forEach");
+            var model = sequelize.import(path.join(__dirname, file));
+            db[model.name] = model;
+        });
+
+Object.keys(db).forEach(function (modelName) {
+    console.log("server->models->index->Object.keys(db).forEach");
     if ("associate" in db[modelName]) {
         db[modelName].associate(db);
     }

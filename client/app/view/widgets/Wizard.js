@@ -147,6 +147,8 @@ Ext.define('App.view.widgets.Wizard', {
     }],
 
     initialize: function() {
+        console.log("client->app->view->widgets->Wizard->initialize");
+        
         var me = this;
         me.callParent();
         me.add(me.getToolbar());
@@ -154,6 +156,7 @@ Ext.define('App.view.widgets.Wizard', {
     },
 
     reset: function() {
+        console.log("client->app->view->widgets->Wizard->reset");
         var me = this;
         me.callParent();
         me.fireEvent('reset');
@@ -163,6 +166,7 @@ Ext.define('App.view.widgets.Wizard', {
     // [WORKAROUND] Ext.form.Panel override the setRecord and updateRecord methods in a way
     // that we can't use updateRecord to be notified when the record actually changes.
     setRecord: function(record) {
+        console.log("client->app->view->widgets->Wizard->setRecord");
         this.getViewModel().set('record', record);
     }
 });

@@ -14,10 +14,13 @@ Ext.define('App.profile.Tablet', {
     },
 
     isActive: function () {
+        console.log("client->app->profile->Tablet->isActive");
+        
         return !Ext.platformTags.phone;
     },
 
     launch: function () {
+        console.log("client->app->profile->Tablet->launch");
         // Add a class to the body el to identify the phone profile so we can
         // override CSS styles easily. The framework adds x-phone so we could
         // use it but this way the app controls a class that is always present

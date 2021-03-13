@@ -33,18 +33,21 @@ Ext.define('App.view.widgets.HistoryPanel', {
             disabled: true
         }
     }],
-
     initialize: function() {
+        console.log("client->app->view->widgets->HistoryPanel->initialize");
+        
         var me = this;
         me.callParent(arguments);
         me.relayEvents(me.lookup('historyview'), ['childtap']);
     },
 
     applyStore: function(value) {
+        console.log("client->app->view->widgets->HistoryPanel->applyStore");
         return value? Ext.getStore(value) : null;
     },
 
     updateStore: function(curr, prev) {
+        console.log("client->app->view->widgets->HistoryPanel->updateStore");
         var listeners = {
                 datachanged: 'updateButtonState',
                 scope: this
@@ -62,6 +65,7 @@ Ext.define('App.view.widgets.HistoryPanel', {
     },
 
     updateButtonState: function(store) {
+        console.log("client->app->view->widgets->HistoryPanel->updateButtonState");
         this.lookup('showallbutton').setDisabled(!store || !store.getCount());
     }
 });

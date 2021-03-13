@@ -7,7 +7,7 @@ Ext.define('App.view.tablet.history.BrowseToolbar', {
             xtype: 'combobox',
             valueField: 'value',
             displayField: 'label',
-            placeholder: 'All Employees',
+            placeholder: 'All Employees 3',
             queryMode: 'local',
             weight: 10,
             bind: {
@@ -19,7 +19,7 @@ Ext.define('App.view.tablet.history.BrowseToolbar', {
             xtype: 'combobox',
             valueField: 'value',
             displayField: 'label',
-            placeholder: 'All Organizations',
+            placeholder: 'All Organizations 3',
             queryMode: 'local',
             weight: 11,
             bind: {
@@ -31,7 +31,7 @@ Ext.define('App.view.tablet.history.BrowseToolbar', {
             xtype: 'combobox',
             valueField: 'value',
             displayField: 'label',
-            placeholder: 'All Offices',
+            placeholder: 'All Offices 3',
             queryMode: 'local',
             weight: 12,
             bind: {

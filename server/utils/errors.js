@@ -17,6 +17,8 @@ var codes = {
 };
 
 function generate(message, error, code, data) {
+    console.log("server->utils->errors->generate");
+    
     return {
         // Ext.Direct expects the error (object or string) to be store in data.message
         message: extend(extend({}, data), {
@@ -29,6 +31,7 @@ function generate(message, error, code, data) {
 
 var types = {
     unauthorized: function(data) {
+        console.log("server->utils->errors->unauthorized");
         return generate(
             'User is not authorized to perform this action',
             'Unauthorized',
@@ -38,6 +41,8 @@ var types = {
     },
 
     authTokenExpired: function(data) {
+        console.log("server->utils->errors->authTokenExpired");
+        
         return generate(
             'Your session has expired, please login again',
             'AuthTokenExpired',
@@ -47,6 +52,7 @@ var types = {
     },
 
     authTokenInvalid: function(data) {
+        console.log("server->utils->errors->authTokenInvalid");
         return generate(
             'Your session is no longer valid, please login again',
             'AuthTokenInvalid',
@@ -56,6 +62,8 @@ var types = {
     },
 
     notImplemented: function(data) {
+        console.log("server->utils->errors->notImplemented");
+        
         return generate(
             'Not implemented',
             'NotImplemented',
@@ -65,6 +73,7 @@ var types = {
     },
 
     invalidParams: function(data) {
+        console.log("server->utils->errors->invalidParams");
         if (!Array.isArray(data)) {
             data = [data];
         }
@@ -78,6 +87,7 @@ var types = {
     },
 
     readonly: function(data) {
+        console.log("server->utils->errors->readonly");
         return generate(
             'Read-only session, data not updated',
             'ReadOnlySession',
@@ -95,6 +105,7 @@ module.exports = {
     generate: generate,
 
     parse: function(error) {
+        console.log("server->utils->errors->module.exports->parse");
         switch (error.name) {
         case 'SequelizeValidationError':
         case 'SequelizeUniqueConstraintError':
@@ -107,6 +118,7 @@ module.exports = {
     },
 
     fromJwtError: function(data) {
+        console.log("server->utils->errors->module.exports->fromJwtError");
         // https://github.com/auth0/node-jsonwebtoken#errors--codes
         if (data.name === 'TokenExpiredError') {
             return types.authTokenExpired(data);

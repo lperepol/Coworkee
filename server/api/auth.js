@@ -9,6 +9,8 @@ var Service = {
      * @param {String} params.password The user (hashed) password.
      */
     login: function(params, callback, sid, req, res) {
+        console.log("auth->Service->login");
+        
         session.initiate(params.username, params.password, res).then(function(data) {
             callback(null, data);
         }).catch(function(err) {
@@ -17,6 +19,8 @@ var Service = {
     },
 
     logout: function(params, callback, sid, req) {
+        console.log("auth->Service->logout");
+        
         session.verify(req).then(function() {
             callback(null, true);
         }).catch(function(err) {
@@ -28,6 +32,8 @@ var Service = {
      * Returns the currently authenticated user.
      */
     user: function(params, callback, sid, req) {
+        console.log("auth->Service->user");
+        
         session.verify(req).then(function(session) {
             callback(null, session.user);
         }).catch(function(err) {

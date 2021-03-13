@@ -1,6 +1,8 @@
 "use strict";
 
 module.exports = function(sequelize, DataTypes) {
+    console.log("server->models->office->module.exports");
+    
     var Model = sequelize.define("Office", {
         id: {
             type: DataTypes.UUID,
@@ -60,15 +62,18 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.TEXT,
             allowNull: false,
             get: function () {
+                console.log("server->models->office->module.exports->location->get");
                 return JSON.parse(this.getDataValue('location'));
             },
             set: function (value) {
+                console.log("server->models->office->module.exports->location->set");
                 return this.setDataValue('location', JSON.stringify(value));
             }
         }
     });
 
     Model.associate = function(models) {
+            console.log("server->models->office->module.exports->Model.associate");
             Model.hasMany(models.Person, { as: 'members' });
 
             // http://stackoverflow.com/a/37817966

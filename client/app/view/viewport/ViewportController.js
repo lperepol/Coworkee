@@ -17,12 +17,15 @@ Ext.define('App.view.viewport.ViewportController', {
     },
 
     onLaunch: function() {
+        console.log("client->app->view->viewport->ViewportController->onLaunch");
+        
         this.originalRoute = App.getApplication().getDefaultToken();
         this.initDirect();
         this.restoreSession();
     },
 
     showView: function(xtype) {
+        console.log("client->app->view->viewport->ViewportController->showView");
         var view = this.lookup(xtype),
             viewport = this.getView();
 
@@ -38,16 +41,19 @@ Ext.define('App.view.viewport.ViewportController', {
     },
 
     showAuth: function() {
+        console.log("client->app->view->viewport->ViewportController->showAuth");
         this.showView('authlogin');
     },
 
     showMain: function() {
+        console.log("client->app->view->viewport->ViewportController->showMain");
         this.showView('main');
     },
 
     // ROUTING
 
     handleLoginRoute: function() {
+        console.log("client->app->view->viewport->ViewportController->handleLoginRoute");
         var session = this.session;
         if (session && session.isValid()) {
             this.redirectTo('', {replace: true});
@@ -58,6 +64,7 @@ Ext.define('App.view.viewport.ViewportController', {
     },
 
     handleUnmatchedRoute: function(route) {
+        console.log("client->app->view->viewport->ViewportController->handleUnmatchedRoute");
         var me = this;
 
         if (!me.session || !me.session.isValid()) {
@@ -79,6 +86,7 @@ Ext.define('App.view.viewport.ViewportController', {
     // EXT DIRECT
 
     initDirect: function() {
+        console.log("client->app->view->viewport->ViewportController->initDirect");
         var api = Server.API;
         if (!api) {
             Ext.raise('Failed to load Direct API');
@@ -94,6 +102,7 @@ Ext.define('App.view.viewport.ViewportController', {
     },
 
     setDirectToken: function(token) {
+        console.log("client->app->view->viewport->ViewportController->setDirectToken");
         // https://jwt.io/introduction/#how-do-json-web-tokens-work-
         var provider = Ext.direct.Manager.getProvider('server'),
             headers = provider.getHeaders() || {};
@@ -108,6 +117,7 @@ Ext.define('App.view.viewport.ViewportController', {
     },
 
     onDirectData: function(provider, e) {
+        console.log("client->app->view->viewport->ViewportController->onDirectData");
         if (e.type !== 'exception') {
             return;
         }
@@ -127,6 +137,7 @@ Ext.define('App.view.viewport.ViewportController', {
     // SESSION MANAGEMENT
 
     restoreSession: function() {
+        console.log("client->app->view->viewport->ViewportController->restoreSession");
         var data = App.util.State.get('session'),
             session = data? App.model.Session.loadData(data) : null;
 
@@ -140,18 +151,21 @@ Ext.define('App.view.viewport.ViewportController', {
     },
 
     initiateSession: function(session) {
+        console.log("client->app->view->viewport->ViewportController->initiateSession");
         this.setDirectToken(session.get('token'));
         this.saveSession(session);
         this.showMain();
     },
 
     terminateSession: function() {
+        console.log("client->app->view->viewport->ViewportController->terminateSession");
         this.setDirectToken(null);
         this.saveSession(null);
         this.showAuth();
     },
 
     saveSession: function(session) {
+        console.log("client->app->view->viewport->ViewportController->saveSession");
         App.util.State.set('session', session && session.getData(true));
         this.getViewModel().set('user', session && session.getUser());
         this.session = session;
@@ -160,6 +174,7 @@ Ext.define('App.view.viewport.ViewportController', {
     // AUTHENTICATION
 
     onLogin: function(session) {
+        console.log("client->app->view->viewport->ViewportController->onLogin");
         if (!session || !session.isValid()) {
             return false;
         }
@@ -169,6 +184,7 @@ Ext.define('App.view.viewport.ViewportController', {
     },
 
     onLogout: function() {
+        console.log("client->app->view->viewport->ViewportController->onLogout");
         var me = this,
             view = me.getView(),
             session = me.session;

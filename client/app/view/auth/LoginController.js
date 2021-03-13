@@ -3,6 +3,8 @@ Ext.define('App.view.auth.LoginController', {
     alias: 'controller.authlogin',
 
     init: function() {
+        console.log("client->app->view->auth->LoginController->init");
+        
         this.callParent(arguments);
         this.lookup('form').setValues({
             username: 'norma.flores',
@@ -11,6 +13,7 @@ Ext.define('App.view.auth.LoginController', {
     },
 
     onLoginTap: function() {
+        console.log("client->app->view->auth->LoginController->onLoginTap");
         var me = this,
             form = me.lookup('form'),
             values = form.getValues();

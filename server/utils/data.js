@@ -5,6 +5,8 @@ var sequelize = models.sequelize;
 var Promise = models.Sequelize.Promise;
 
 function pick(items, index) {
+    console.log("server->utils->data->pick");
+    
     var count = items.length;
     if (index === undefined) {
         index = Math.floor(Math.random() * count);
@@ -15,7 +17,9 @@ function pick(items, index) {
 
 module.exports = {
     reset: function() {
+        console.log("server->utils->data->module.exports->reset");
         console.info('Populating database with example data...');
+        
         return sequelize.transaction(function(t) {
             return sequelize.sync({ force: true, transaction: t }).then(function () {
                 return Promise.all([

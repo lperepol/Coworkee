@@ -3,6 +3,8 @@ Ext.define('App.view.organization.ShowController', {
     alias: 'controller.organizationshow',
 
     onRecordChange: function(view, record) {
+        console.log("client->app->view->organization->ShowController->onRecordChange");
+        
         var vm = this.getViewModel(),
             people = vm.getStore('people'),
             history = vm.getStore('history');
@@ -19,10 +21,12 @@ Ext.define('App.view.organization.ShowController', {
     },
 
     onPeopleHeadcountTap: function() {
+        console.log("client->app->view->organization->ShowController->onPeopleHeadcountTap");
         this.redirectTo('people/organization/' + this.getRecord().getId())
     },
 
     onHistoryAllTap: function() {
+        console.log("client->app->view->organization->ShowController->onHistoryAllTap");
         this.redirectTo('history/organization/' + this.getRecord().getId());
     }
 });

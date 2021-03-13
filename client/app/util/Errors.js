@@ -3,6 +3,8 @@ Ext.define('App.util.Errors', {
 
     statics: {
         toForm: function(errors) {
+            console.log("client->app->util->Errors->statics->toForm");
+            
             var values = {};
 
             if (Ext.isObject(errors)) {
@@ -25,6 +27,7 @@ Ext.define('App.util.Errors', {
         },
 
         process: function(error, form) {
+            console.log("client->app->util->Errors->statics->process");
             if (!error) {
                 return false;
             }

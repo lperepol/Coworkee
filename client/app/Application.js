@@ -31,6 +31,8 @@ Ext.define('App.Application', {
     defaultToken: 'home',
 
     launch: function(profile) {
+        console.log("client->app->->widgetviews->Application->launch");
+
         // The viewport controller requires xtype defined by profiles, so let's perform extra
         // initialization when the application and its dependencies are fully accessible.
         Ext.Viewport.getController().onLaunch();
@@ -39,6 +41,7 @@ Ext.define('App.Application', {
     },
 
     onAppUpdate: function () {
+        console.log("client->app->->widgetviews->Application->onAppUpdate");
         Ext.Msg.confirm('Application Update', 'This application has an update, reload?',
             function (choice) {
                 if (choice === 'yes') {

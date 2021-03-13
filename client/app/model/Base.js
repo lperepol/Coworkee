@@ -40,10 +40,13 @@ Ext.define('App.model.Base', {
     },
 
     toUrl: function() {
+        console.log("client->app->model->Base->toUrl");
+        
         return this.get('url');
     },
 
     toEditUrl: function() {
+        console.log("client->app->model->Base->toEditUrl");
         return this.toUrl() + '/edit';
     }
 });

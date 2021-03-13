@@ -9,10 +9,13 @@ Ext.define('App.view.widgets.ShowController', {
     },
 
     getRecord: function() {
+        console.log("client->app->view->widgets->ShowController->getRecord");
+        
         return this.getViewModel().get('record');
     },
 
     onRecordChange: function(view, record) {
+        console.log("client->app->view->widgets->ShowController->onRecordChange");
         this.getViewModel().set('record', record);
 
         // Scroll to the top of the view but make sure that the view is still
@@ -23,10 +26,12 @@ Ext.define('App.view.widgets.ShowController', {
     },
 
     onEditTap: function() {
+        console.log("client->app->view->widgets->ShowController->onEditTap");
         this.redirectTo(this.getRecord().toEditUrl());
     },
 
     onPeopleChildTap: function(view, location) {
+        console.log("client->app->view->widgets->ShowController->onPeopleChildTap");
         var record = location.record;
         if (record) {
             this.redirectTo(record);
@@ -34,6 +39,7 @@ Ext.define('App.view.widgets.ShowController', {
     },
 
     onHistoryChildTap: function(view, location) {
+        console.log("client->app->view->widgets->ShowController->onHistoryChildTap");
         var record = location.record;
         if (record) {
             this.redirectTo(record.getRecipient());
@@ -41,6 +47,7 @@ Ext.define('App.view.widgets.ShowController', {
     },
 
     onHistoryAllTap: function() {
+        console.log("client->app->view->widgets->ShowController->onHistoryAllTap");
         this.redirectTo('history/recipient/' + this.getRecord().getId());
     }
 });

@@ -10,15 +10,19 @@ Ext.define('App.view.home.HomeController', {
     },
 
     init: function() {
+        console.log("client->app->view->home->HomeController->init");
+        
         this.callParent(arguments);
         this.update();
     },
 
     initViewModel: function(vm) {
+        console.log("client->app->view->home->HomeController->initViewModel");
         vm.bind('{range}', this.onRangeChange, this);
     },
 
     update: function() {
+        console.log("client->app->view->home->HomeController->update");
         var me = this,
             vm = me.getViewModel(),
             now = new Date(),
@@ -42,12 +46,14 @@ Ext.define('App.view.home.HomeController', {
     },
 
     refresh: function() {
+        console.log("client->app->view->home->HomeController->refresh");
         var vm = this.getViewModel();
         vm.getStore('history').load();
         vm.getStore('events').load();
     },
 
     onRangeChange: function(range) {
+        console.log("client->app->view->home->HomeController->onRangeChange");
         var D = Ext.Date,
             store = this.getViewModel().getStore('events'),
             today = D.clearTime(new Date()),
@@ -86,6 +92,7 @@ Ext.define('App.view.home.HomeController', {
     },
 
     onRouteChange: function(view, route) {
+        console.log("client->app->view->home->HomeController->onRouteChange");
         var matches = (route || '').match(/(recent|upcoming|past)/g);
         if (matches) {
             this.getViewModel().set('range', matches[0]);
@@ -93,6 +100,7 @@ Ext.define('App.view.home.HomeController', {
     },
 
     onEventChildTap: function(view, location) {
+        console.log("client->app->view->home->HomeController->onEventChildTap");
         var record = location.record;
         if (record) {
             this.redirectTo(record.getPerson());
@@ -100,6 +108,7 @@ Ext.define('App.view.home.HomeController', {
     },
 
     onHistoryChildTap: function(view, location) {
+        console.log("client->app->view->home->HomeController->onHistoryChildTap");
         var record = location.record;
         if (record) {
             this.redirectTo(record.getRecipient());
@@ -107,6 +116,7 @@ Ext.define('App.view.home.HomeController', {
     },
 
     onHistoryAllTap: function() {
+        console.log("client->app->view->home->HomeController->onHistoryAllTap");
         this.redirectTo('history');
     }
 });

@@ -5,6 +5,8 @@ Ext.define('App.overrides.util.Format', {
     override: 'Ext.util.Format',
 
     dateDiff: function(v0, v1, unit) {
+        console.log("client->App.overrides.util.Format->dateDiff");
+
         var seconds, name, diff;
 
         if (!unit || unit == 'auto') {
@@ -37,6 +39,7 @@ Ext.define('App.overrides.util.Format', {
     },
 
     actionIconCls: function(type) {
+        console.log("client->App.overrides.util.Format->actionIconCls");
         switch (type) {
         case 'profile': type = 'user'; break;
         case 'email': type = 'envelope'; break;

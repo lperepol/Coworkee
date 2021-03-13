@@ -29,6 +29,8 @@ Ext.define('App.store.Filters', {
     },
 
     updateService: function(service) {
+        console.log("client->app->store->Filters->updateService");
+        
         var proxy = this.getProxy(),
             api = proxy.getApi() || {};
         api.read = 'Server.' + service + '.filters';
@@ -36,6 +38,7 @@ Ext.define('App.store.Filters', {
     },
 
     updateField: function(field) {
+        console.log("client->app->store->Filters->updateField");
         var proxy = this.getProxy(),
             params = proxy.getExtraParams();
 
@@ -47,6 +50,7 @@ Ext.define('App.store.Filters', {
     },
 
     updateLabel: function(label) {
+        console.log("client->app->store->Filters->updateLabel");
         var proxy = this.getProxy(),
             params = proxy.getExtraParams();
 

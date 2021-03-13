@@ -8,6 +8,8 @@ var models = require('../models');
 
 var Service = {
     list: function(params, callback, sid, req) {
+        console.log("events->Service->list");
+        
         session.verify(req).then(function() {
             var sequelize = models.sequelize;
             var filters = [];
@@ -114,6 +116,8 @@ var Service = {
     },
 
     insert: function(params, callback, sid, req) {
+        console.log("events->Service->insert");
+        
         session.verify(req).then(function() {
             // NOTE(SB): the direct proxy requires methods for all CRUD actions
             throw errors.types.notImplemented();
@@ -123,6 +127,7 @@ var Service = {
     },
 
     update: function(params, callback, sid, req) {
+        console.log("events->Service->update");
         session.verify(req).then(function() {
             // NOTE(SB): the direct proxy requires methods for all CRUD actions
             throw errors.types.notImplemented();
@@ -132,6 +137,7 @@ var Service = {
     },
 
     remove: function(params, callback) {
+        console.log("events->Service->remove");
         session.verify(req).then(function() {
             // NOTE(SB): the direct proxy requires methods for all CRUD actions
             throw errors.types.notImplemented();

@@ -7,6 +7,8 @@ Ext.define('App.view.history.BrowserModel', {
             type: 'actions',
             grouper: {
                 groupFn: function(record) {
+                    console.log("client->app->view->history->BrowserModel->groupFn");
+                        
                     var date = Ext.Date.clearTime(new Date(record.get('created'))),
                         today = Ext.Date.clearTime(new Date());
 

@@ -1,3 +1,5 @@
+
+
 # Ext JS Employee Directory
 Ext JS Sample Application - Employee Directory (Coworkee)
 
@@ -13,16 +15,16 @@ On Windows the "~" part of the path will be replaced by something like "C:\Users
 ### Install the server
 Install the server node.js dependencies:
 
-    $ cd server
+    $ cd C:/Cygwin64/home/lperepol/Projects/ExtJs/LoianeGroner/MasteringExtJSSecondEdition/Projects/ExtJs/Coworkee/server
     $ npm install
 
 ### Build the client
 Install the Ext JS framework for the application:
 
-    $ cd client
-    $ sencha app install ~/sencha-sdks
+    $ cd C:/Cygwin64/home/lperepol/Projects/ExtJs/LoianeGroner/MasteringExtJSSecondEdition/Projects/ExtJs/Coworkee/client
+    $ sencha app install C:/Users/lperepol/Downloads/SenchaEnterpriseExtJS/Unzip_7.xx/ext-7.3.1/ext-7.3.1
     or
-    $ sencha app upgrade ~/sencha-sdks/ext-<version of the sdk>
+    $ sencha app upgrade C:/Users/lperepol/Downloads/SenchaEnterpriseExtJS/Unzip_7.xx/ext-7.3.1/ext-7.3.1
 
 Note: If you use `sencha app install ~/sencha-sdks` here, the version of the SDK inside ~/sencha-sdks will
 have to mach the version specified in `workspace.json`.

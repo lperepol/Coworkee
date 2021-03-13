@@ -31,7 +31,7 @@ Ext.define('App.view.tablet.person.BrowseToolbar', {
             xtype: 'button',
             iconCls: 'x-fa fa-plus',
             handler: 'onCreate',
-            text: 'Create',
+            text: 'Create Debug 4',
             weight: 50
         }
     }

@@ -61,8 +61,9 @@ Ext.define('App.view.main.Menu', {
             weight: 20
         }
     },
-
     updateSelection: function(value) {
+        console.log("client->app->view->main->Menu->updateSelection");
+        
         this.child('#navigator').setSelection(value);
     }
 });

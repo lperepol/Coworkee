@@ -68,6 +68,8 @@ Ext.define('App.view.home.Home', {
     }],
 
     reset: function() {
+        console.log("client->app->view->home->Home->reset");
+        
         this.fireEvent('reset');
         return this;
     }

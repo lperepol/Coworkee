@@ -20,6 +20,8 @@ Ext.define('App.model.Person', {
 
         // Calculated fields
         { name: 'fullname', calculate: function (data) {
+            console.log("client->app->model->Person->calculate");
+                
             return data.firstname + ' ' + data.lastname;
         }}
     ],
@@ -39,6 +41,8 @@ Ext.define('App.model.Person', {
          * then request the server with the desired id.
          */
         load: function(id, options, session) {
+            console.log("client->app->model->Person->statics->load");
+            
             var record = Ext.create('App.model.Person');
             record.setSession(session),
             record.load(
@@ -49,6 +53,8 @@ Ext.define('App.model.Person', {
 
     // @see https://tools.ietf.org/html/rfc3966
     phoneCall: function() {
+        console.log("client->app->model->Person->phoneCall");
+        
         var me = this,
             num = me.get('phone'),
             ext, url;
@@ -68,6 +74,8 @@ Ext.define('App.model.Person', {
 
     // @see https://msdn.microsoft.com/en-us/library/office/dn745882.aspx
     skypeCall: function(username) {
+        console.log("client->app->model->Person->skypeCall");
+        
         var username = this.get('username');
         if (Ext.isEmpty(username)) {
             return false;
@@ -79,6 +87,7 @@ Ext.define('App.model.Person', {
     // Android 4.4.2 issue: https://code.google.com/p/android/issues/detail?id=63538
     // @see https://tools.ietf.org/html/rfc6068
     mailTo: function(emails) {
+        console.log("client->app->model->Person->mailTo");
         var email = this.get('email');
         if (Ext.isEmpty(email)) {
             return false;
@@ -88,6 +97,7 @@ Ext.define('App.model.Person', {
     },
 
     linkedIn: function(username) {
+        console.log("client->app->model->Person->linkedIn");
         var username = this.get('username');
         if (Ext.isEmpty(username)) {
             return false;
@@ -97,6 +107,7 @@ Ext.define('App.model.Person', {
     },
 
     openUrl: function(url, browser) {
+        console.log("client->app->model->Person->openUrl");
         return !!window.open(url, browser? '_system' : '_self');
     }
 });

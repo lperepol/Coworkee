@@ -5,6 +5,7 @@ Ext.define('App.view.tablet.history.Browse', {
     requires: [
         'Ext.plugin.ListPaging'
     ],
+    //controller: 'tablet-personbrowse',
 
     tbar: {
         xtype: 'historybrowsetoolbar'

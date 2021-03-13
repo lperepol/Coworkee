@@ -29,6 +29,8 @@ function writableFields(params) {
 
 var Service = {
     get: function(params, callback, sid, req) {
+        console.log("people->Service->get");
+        
         session.verify(req).then(function() {
             var query = params;
             if (!query) {
@@ -54,6 +56,7 @@ var Service = {
     },
 
     list: function(params, callback, sid, req) {
+        console.log("people->Service->list");
         session.verify(req).then(function() {
             if (params.id) {
                 return models.Person.scope('nested').lookup(params.id).then(function(person) {
@@ -76,6 +79,7 @@ var Service = {
     },
 
     insert: function(params, callback, sid, req) {
+        console.log("people->Service->insert");
         session.verify(req).then(function() {
             return models.sequelize.transaction(function(t) {
                 return models.Person.create(writableFields(params), {
@@ -95,6 +99,7 @@ var Service = {
     },
 
     update: function(params, callback, sid, req) {
+        console.log("people->Service->update");
         session.verify(req).then(function() {
             if (!params.id) {
                 throw errors.types.invalidParams({
@@ -139,6 +144,7 @@ var Service = {
     },
 
     remove: function(params, callback, sid, req) {
+        console.log("people->Service->remove");
         session.verify(req).then(function() {
             throw errors.types.notImplemented();
         }).catch(function(err) {
@@ -147,6 +153,7 @@ var Service = {
     },
 
     filters: function(params, callback, sid, req) {
+        console.log("people->Service->remove");
         session.verify(req).then(function() {
             return helpers.fetchFilters(params, models.Person);
         }).then(function(results) {
@@ -159,6 +166,7 @@ var Service = {
     },
 
     generateUsername: function(params, callback, sid, req) {
+        console.log("people->Service->generateUsername");
         session.verify(req).then(function() {
             var firstname = params.firstname || undefined;
             if (!firstname) {

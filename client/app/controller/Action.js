@@ -11,6 +11,7 @@ Ext.define('App.controller.Action', {
     extend: 'Ext.app.Controller',
 
     listen: {
+        
         controller: {
             '*': {
                 actionlog: 'log',
@@ -20,6 +21,7 @@ Ext.define('App.controller.Action', {
     },
 
     log: function(action, record) {
+        console.log("client->app->controller->Action->log");
         Ext.create('App.model.Action', {
             type: action,
             recipient_id: record.getId()
@@ -27,6 +29,7 @@ Ext.define('App.controller.Action', {
     },
 
     exec: function(action, record) {
+        console.log("client->app->controller->Action->exec");
         if (!record) {
             return false;
         }

@@ -11,11 +11,14 @@ Ext.define('App.util.State', {
     }),
 
     get: function(key, defaultValue) {
+        console.log("client->app->util->State->get");
+        
         var value = this.store.getItem(key);
         return value === undefined? defaultValue : Ext.decode(value);
     },
 
     set: function(key, value) {
+        console.log("client->app->util->State->set");
         if (value == null) {    // !== undefined && !== null
             this.store.removeItem(key);
         } else {
@@ -24,6 +27,7 @@ Ext.define('App.util.State', {
     },
 
     clear: function(key) {
+        console.log("client->app->util->State->clear");
         this.set(key, null);
     }
 });

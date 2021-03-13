@@ -7,6 +7,8 @@ var models = require('../models');
 
 var Service = {
     list: function(params, callback, sid, req) {
+        console.log("actions->Service->list");
+
         session.verify(req).then(function(session) {
             return models.Action.scope('nested').findAndCountAll(
                 helpers.sequelizify(params, models.Action, {
@@ -23,6 +25,8 @@ var Service = {
     },
 
     insert: function(params, callback, sid, req) {
+        console.log("actions->Service->insert");
+
         session.verify(req).then(function(session) {
             return models.Person.lookup(params.recipient_id).then(function(person) {
                 var subject = models.Action.subject(params.type, person);
@@ -48,6 +52,8 @@ var Service = {
     },
 
     update: function(params, callback, sid, req) {
+        console.log("actions->Service->update");
+        
         session.verify(req).then(function() {
             // NOTE(SB): the direct proxy requires methods for all CRUD actions
             throw errors.types.notImplemented();
@@ -57,6 +63,8 @@ var Service = {
     },
 
     remove: function(params, callback, sid, req) {
+        console.log("actions->Service->remove");
+        
         session.verify(req).then(function() {
             var ids = helpers.idsFromParams(params);
             if (ids.length === 0) {
@@ -78,6 +86,9 @@ var Service = {
     },
 
     filters: function(params, callback, sid, req) {
+        console.log("actions->Service->filters");
+        
+        
         session.verify(req).then(function(session) {
             return helpers.fetchFilters(params, models.Action, {
                 where: { person_id: session.user.get('id') }

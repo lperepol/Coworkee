@@ -9,6 +9,8 @@ Ext.define('App.model.Session', {
 
     statics: {
         login: function(username, password) {
+            console.log("client->app->model->Session->statics->login");
+            
             return new Ext.Promise(function (resolve, reject) {
                 Server.auth.login({
                     username: username,
@@ -32,12 +34,14 @@ Ext.define('App.model.Session', {
     },
 
     isValid: function() {
+        console.log("client->app->model->Session->isValid");
         return !Ext.isEmpty(this.get('token'))
             && this.get('expires') > new Date()
             && this.getUser() !== null;
     },
 
     logout: function() {
+        console.log("client->app->model->Session->logout");
         return new Ext.Promise(function (resolve, reject) {
             Server.auth.logout({}, resolve);
         });

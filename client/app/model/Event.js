@@ -9,6 +9,8 @@ Ext.define('App.model.Event', {
         // Calculated fields
         // 'days_to_now' is used in store to locally sort and group events.
         { name: 'days_to_now', calculate: function (data) {
+            console.log("client->app->model->Event->calculate");
+                
             return data.date? Ext.Date.diff(
                 Ext.Date.clearTime(new Date()),
                 Ext.Date.clearTime(data.date),

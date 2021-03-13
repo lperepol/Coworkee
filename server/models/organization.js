@@ -1,6 +1,8 @@
 "use strict";
 
 module.exports = function(sequelize, DataTypes) {
+    console.log("server->models->organozation->module.exports");
+    
     var Model = sequelize.define("Organization", {
         id: {
             type: DataTypes.UUID,
@@ -25,6 +27,8 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Model.associate = function(models) {
+        console.log("server->models->organozation->module.exports->Model.associate");
+        
         Model.hasMany(models.Person, { as: 'members' });
         Model.belongsTo(models.Person, { as: 'manager', constraints: false });
 

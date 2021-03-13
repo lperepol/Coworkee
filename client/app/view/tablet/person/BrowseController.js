@@ -3,6 +3,8 @@ Ext.define('App.view.tablet.person.BrowseController', {
     alias: 'controller.tablet-personbrowse',
 
     onCreate: function() {
+        console.log("client->app->view->tablet->person->BrowseController->onCreate");
+        
         // The creation form can be accessed either by clicking the "create" button (dialog)
         // or via the #person/create url (page) - default config matches the "page" view.
         // Note that this dialog will be destroyed on close.

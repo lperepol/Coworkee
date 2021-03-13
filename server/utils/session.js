@@ -16,6 +16,8 @@ module.exports = {
     readonly: config.session.readonly,
 
     initiate: function(username, password, res) {
+        console.log("server->utils->session->module.exports->initiate");
+        
         return models.Person.scope('nested').findOne({
             where: {
                 password: password,
@@ -47,6 +49,7 @@ module.exports = {
     },
 
     verify: function(request) {
+        console.log("server->utils->session->module.exports->verify");
         return new Promise(function(resolve, reject) {
             // https://jwt.io/introduction/#how-do-json-web-tokens-work-
             var header = request.headers && request.headers.authorization;

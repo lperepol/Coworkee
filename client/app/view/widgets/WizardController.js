@@ -7,14 +7,18 @@ Ext.define('App.view.widgets.WizardController', {
     ],
 
     getItemCount: function(tabs) {
+        console.log("client->app->view->widgets->WizardController->getItemCount");
+        
         return tabs.getInnerItems().length;
     },
 
     getActiveIndex: function(tabs) {
+        console.log("client->app->view->widgets->WizardController->getActiveIndex");
         return tabs.getInnerItems().indexOf(tabs.getActiveItem());
     },
 
     advance: function(increment) {
+        console.log("client->app->view->widgets->WizardController->advance");
         var me = this,
             tabs = me.lookup('tabs'),
             index = me.getActiveIndex(tabs),
@@ -25,6 +29,7 @@ Ext.define('App.view.widgets.WizardController', {
     },
 
     resync: function() {
+        console.log("client->app->view->widgets->WizardController->resync");
         var me = this,
             vm = me.getViewModel(),
             tabs = me.lookup('tabs'),
@@ -40,6 +45,7 @@ Ext.define('App.view.widgets.WizardController', {
     },
 
     finalize: function() {
+        console.log("client->app->view->widgets->WizardController->finalize");
         var view = this.getView();
         if (view.getFloated()) {
             view.close();
@@ -49,6 +55,7 @@ Ext.define('App.view.widgets.WizardController', {
     },
 
     onSubmitTap: function() {
+        console.log("client->app->view->widgets->WizardController->onSubmitTap");
         var me = this,
             form = me.getView(),
             record = me.getViewModel().get('record');
@@ -75,28 +82,34 @@ Ext.define('App.view.widgets.WizardController', {
     },
 
     onCancelTap: function() {
+        console.log("client->app->view->widgets->WizardController->onCancelTap");
         this.finalize();
     },
 
     onPrevTap: function() {
+        console.log("client->app->view->widgets->WizardController->onPrevTap");
         this.advance(-1);
     },
 
     onNextTap: function() {
+        console.log("client->app->view->widgets->WizardController->onNextTap");
         this.advance(1);
     },
 
     onScreenAdd: function() {
+        console.log("client->app->view->widgets->WizardController->onScreenAdd");
         this.resync();
     },
 
     onScreenRemove: function(tabs) {
+        console.log("client->app->view->widgets->WizardController->onScreenRemove");
         if (!tabs.destroying) {
             this.resync();
         }
     },
 
     onScreenActivate: function(tabs) {
+        console.log("client->app->view->widgets->WizardController->onScreenActivate");
         // This event is triggered when the view is being destroyed!
         if (!tabs.destroying) {
             this.resync();

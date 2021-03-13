@@ -19,6 +19,8 @@ function writableFields(params) {
 
 var Service = {
     list: function(params, callback, sid, req) {
+        console.log("offices->Service->list");
+        
         session.verify(req).then(function() {
             return models.Office.scope('nested').findAndCountAll(
                 helpers.sequelizify(params, models.Office));
@@ -33,6 +35,7 @@ var Service = {
     },
 
     insert: function(params, callback, sid, req) {
+        console.log("offices->Service->insert");
         session.verify(req).then(function() {
             return models.sequelize.transaction(function(t) {
                 return models.Office.create(writableFields(params), {
@@ -52,6 +55,7 @@ var Service = {
     },
 
     update: function(params, callback, sid, req) {
+        console.log("offices->Service->update");
         session.verify(req).then(function() {
             if (!params.id) {
                 throw errors.types.invalidParams({
@@ -93,6 +97,7 @@ var Service = {
     },
 
     remove: function(params, callback, sid, req) {
+        console.log("offices->Service->remove");
         session.verify(req).then(function() {
             throw errors.types.notImplemented();
         }).catch(function(err) {
@@ -101,6 +106,7 @@ var Service = {
     },
 
     filters: function(params, callback, sid, req) {
+        console.log("offices->Service->filters");
         session.verify(req).then(function() {
             return helpers.fetchFilters(params, models.Office);
         }).then(function(results) {

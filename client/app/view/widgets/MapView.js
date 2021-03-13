@@ -70,6 +70,8 @@ Ext.define('App.view.widgets.MapView', {
     },
 
     updateMarkers: function(current, previous) {
+        console.log("client->app->view->widgets->HistoryView->updateMarkers");
+        
         var me = this,
             listeners = {
                 refresh: 'onStoreRefresh',
@@ -89,6 +91,8 @@ Ext.define('App.view.widgets.MapView', {
     },
 
     onStoreRefresh: function(store) {
+        console.log("client->app->view->widgets->HistoryView->onStoreRefresh");
+        
         var records = store.getRange();
         if (records.length === 1) {
             this.setMapCenter(records[0]);

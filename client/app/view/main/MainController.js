@@ -33,6 +33,8 @@ Ext.define('App.view.main.MainController', {
      * @protected
      */
     activate: function(ref) {
+        console.log("client->app->view->main->MainController->activate");
+        
         var view = ref.isComponent? ref : this.lookup(ref),
             child = view,
             parent;
@@ -46,10 +48,14 @@ Ext.define('App.view.main.MainController', {
     },
 
     getContainerForViewId: function() {
+        console.log("client->app->view->main->MainController->getContainerForViewId");
+        
         return this.getView();
     },
 
     ensureView: function(id, config, route) {
+        console.log("client->app->view->main->MainController->ensureView");
+        
         var container = this.getContainerForViewId(id),
             item = container.child('component[viewId=' + id + ']'),
             reset = !!item;
@@ -71,6 +77,8 @@ Ext.define('App.view.main.MainController', {
     },
 
     handleNavigationRoute: function(type, args) {
+        console.log("client->app->view->main->MainController->handleNavigationRoute");
+        
         var store = Ext.getStore('Menu'),
             entry = store.getById(type);
 
@@ -87,6 +95,8 @@ Ext.define('App.view.main.MainController', {
     },
 
     handleDataRoute: function(type, id, args) {
+        console.log("client->app->view->main->MainController->handleDataRoute");
+        
         var me = this,
             args = Ext.Array.clean((args || '').split('/')),
             Model = App.model[Ext.String.capitalize(type)],
@@ -139,6 +149,8 @@ Ext.define('App.view.main.MainController', {
     },
 
     onToggleMainMenu: function(expanded) {
+        console.log("client->app->view->main->MainController->onToggleMainMenu");
+        
         var menu = this.lookup('mainmenu');
         if (expanded === undefined) {
             expanded = !menu.getExpanded();

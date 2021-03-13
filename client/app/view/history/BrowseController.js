@@ -9,6 +9,8 @@ Ext.define('App.view.history.BrowseController', {
     },
 
     refresh: function() {
+        console.log("client->app->view->history->BrowseController->refresh");
+        
         var vm = this.getViewModel();
         vm.getStore('offices').reload();
         vm.getStore('organizations').reload();
@@ -17,6 +19,7 @@ Ext.define('App.view.history.BrowseController', {
     },
 
     onDeleteAction: function(list, data) {
+        console.log("client->app->view->history->BrowseController->onDeleteAction");
         var store = this.getViewModel().getStore('history');
         store.remove(data.record);
         store.save();

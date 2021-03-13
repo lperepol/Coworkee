@@ -10,6 +10,8 @@ Ext.define('App.view.widgets.BrowseController', {
     },
 
     initViewModel: function(vm) {
+        console.log("client->app->view->widgets->BrowseController->initViewModel");
+        
         vm.bind(
             { bindTo: '{filters}', deep: true },
             Ext.Function.createBuffered(function() {
@@ -21,6 +23,7 @@ Ext.define('App.view.widgets.BrowseController', {
     },
 
     updateFilters: function(reload) {
+        console.log("client->app->view->widgets->BrowseController->updateFilters");
         var view = this.getView(),
             store = view.getStore(),
             collection = store && store.getFilters(),
@@ -60,6 +63,7 @@ Ext.define('App.view.widgets.BrowseController', {
     },
 
     onRouteChange: function(view, route) {
+        console.log("client->app->view->widgets->BrowseController->onRouteChange");
         var me = this,
             vm = me.getViewModel(),
             regex = /([^\/]+)\/([^\/]+)/g,
@@ -86,10 +90,13 @@ Ext.define('App.view.widgets.BrowseController', {
     },
 
     onStoreChange: function() {
+        console.log("client->app->view->widgets->BrowseController->onStoreChange");
         this.updateFilters(true);
     },
 
     onChildActivate: function(dataview, location) {
+        console.log("client->app->view->widgets->BrowseController->onChildActivate");
+        
         var record = location.record;
         if (record) {
             this.redirectTo(record);
@@ -97,10 +104,12 @@ Ext.define('App.view.widgets.BrowseController', {
     },
 
     onEditAction: function(list, data) {
+        console.log("client->app->view->widgets->BrowseController->onEditAction");
         this.redirectTo(data.record.toEditUrl());
     },
 
     onRefreshTap: function() {
+        console.log("client->app->view->widgets->BrowseController->onRefreshTap");
         var store = this.getView().getStore();
         if (store) {
             store.reload();
@@ -108,6 +117,7 @@ Ext.define('App.view.widgets.BrowseController', {
     },
 
     onClearFiltersTap: function() {
+        console.log("client->app->view->widgets->BrowseController->onClearFiltersTap");
         this.getViewModel().set('filters', {});
     }
 });

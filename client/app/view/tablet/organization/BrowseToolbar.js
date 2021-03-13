@@ -19,7 +19,7 @@ Ext.define('App.view.tablet.organization.BrowseToolbar', {
             xtype: 'button',
             iconCls: 'x-fa fa-plus',
             handler: 'onCreate',
-            text: 'Create',
+            text: 'Create LP _3',
             weight: 50
         }
     }

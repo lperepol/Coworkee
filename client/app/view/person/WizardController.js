@@ -9,12 +9,14 @@ Ext.define('App.view.person.WizardController', {
     },
 
     refresh: function() {
+        console.log("client->app->view->person->WizardController->refresh");
         var vm = this.getViewModel();
         vm.getStore('offices').reload();
         vm.getStore('organizations').reload();
     },
 
     onNameFieldsBlur: function() {
+        console.log("client->app->view->person->WizardController->onNameFieldsBlur");
         var me = this,
             vm = me.getViewModel(),
             record = vm.get('record'),
@@ -42,6 +44,7 @@ Ext.define('App.view.person.WizardController', {
     },
 
     onUsernameChange: function(field, value) {
+        console.log("client->app->view->person->WizardController->onUsernameChange");
         // If the username field changed and is different from the last generated value, then
         // the user has manually entered a value that we don't want to overwrite, so let's
         // cancel the current generating process (if any) and reset the generated value.
@@ -51,6 +54,7 @@ Ext.define('App.view.person.WizardController', {
     },
 
     doPasswordMatch: function(value) {
+        console.log("client->app->view->person->WizardController->doPasswordMatch");
         return this.lookup('password').getValue() !== value?
             'Passwords do not match' :
             true;

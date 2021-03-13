@@ -4,6 +4,8 @@ var errors = require('../utils/errors');
 var helpers = require('../utils/helpers.js');
 
 module.exports = function(sequelize, DataTypes) {
+    console.log("server->models->person->module.exports");
+
     var Model = sequelize.define("Person", {
         id: {
             type: DataTypes.UUID,
@@ -121,6 +123,8 @@ module.exports = function(sequelize, DataTypes) {
     });
 
    Model.associate = function(models) {
+        console.log("server->models->person->module.exports->Model.associate");
+       
         Model.belongsTo(models.Organization, { as: 'organization' });
         Model.belongsTo(models.Office, { as: 'office' });
         Model.hasMany(models.Action, { as: 'actions' });
@@ -136,6 +140,7 @@ module.exports = function(sequelize, DataTypes) {
     };
 
     Model.lookup = function(identifier) {
+        console.log("server->models->person->module.exports->Model.lookup");
         return this.findOne({
             where: {
                 $or: [

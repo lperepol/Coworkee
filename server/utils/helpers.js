@@ -5,6 +5,8 @@ var config = require('../utils/config');
 var Helpers = {
 
     apiUrl: (function() {
+        console.log("server->utils->helpers->Helpers->apiUrl");
+        
         var direct = config.direct;
         if (direct.relativeUrl) {
             return '';
@@ -16,6 +18,7 @@ var Helpers = {
     }()),
 
     searchableAttributes: function(model) {
+        console.log("server->utils->helpers->Helpers->searchableAttributes");
         var attributes = model.attributes || [];
         var keys = Object.keys(attributes);
         var result = [];
@@ -35,12 +38,14 @@ var Helpers = {
     // regex: /(?:(\w+):(?:"([^"]+)"|([^"\s]*)))|(?:"([^"]+)"|([^\s]+))/g
 
     sequelizeConcat: function(attributes, sequelize) {
+        console.log("server->utils->helpers->Helpers->sequelizeConcat");
         return sequelize.literal(attributes.map(function(value) {
             return sequelize.escape(sequelize.col(value))
         }).join(' || " " || '));
     },
 
     sequelizify: function(params, model, defaults) {
+        console.log("server->utils->helpers->Helpers->sequelizify");
         var query = defaults || {};
         var me = this;
 
@@ -83,6 +88,7 @@ var Helpers = {
                     if (!(prop in model.tableAttributes)) {
                         // let's try in another table:
                         // https://github.com/sequelize/sequelize/issues/3095#issuecomment-149277205
+                        // debugging
                         prop = '$' + model.name + '.' + prop + '$';
                     }
                 }
@@ -119,6 +125,8 @@ var Helpers = {
     },
 
     fetchFilters: function(params, model, defaults) {
+        console.log("server->utils->helpers->Helpers->fetchFilters");
+
         var field = params.field;
         if (!field) {
             throw errors.generate('Missing field argument');
@@ -127,6 +135,7 @@ var Helpers = {
         var sequelize = model.sequelize;
         //var column = field in model.attributes ? field : sequelize.col(field);
         var column = sequelize.col(field);
+        // debugging
         var label = this.sequelizeConcat([].concat(params.label || field), sequelize);
         var query = this.sequelizify(params, model, Object.assign(defaults || {}, {
             attributes: [[label, 'label'], [column, 'value']],
@@ -144,6 +153,7 @@ var Helpers = {
     },
 
     idsFromParams: function(params) {
+        console.log("server->utils->helpers->Helpers->idsFromParams");
         var type = typeof(params);
         if (type === 'string') {
             return [ params ];
@@ -163,6 +173,7 @@ var Helpers = {
     },
 
     extractFields: function(inputs, names) {
+        console.log("server->utils->helpers->Helpers->extractFields");
         var fields = {};
         names.forEach(function(name) {
             if (inputs.hasOwnProperty(name)) {

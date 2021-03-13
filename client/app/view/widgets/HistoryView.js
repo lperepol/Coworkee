@@ -15,6 +15,8 @@ Ext.define('App.view.widgets.HistoryView', {
 
 
     updateDisplayField: function(value) {
+        console.log("client->app->view->widgets->HistoryView->updateDisplayField");
+        
         this.setItemTpl([
             '<div class="history-item-wrapper">',
                 '<div class="history-visual">',
