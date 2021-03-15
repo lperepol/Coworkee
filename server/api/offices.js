@@ -19,7 +19,11 @@ function writableFields(params) {
 
 var Service = {
     list: function(params, callback, sid, req) {
-        console.log("offices->Service->list");
+        console.log("server->offices->actions->Service->list");
+        console.log("************************************");
+        console.log("params");
+        console.log(params);
+        console.log("************************************");
         
         session.verify(req).then(function() {
             return models.Office.scope('nested').findAndCountAll(
@@ -35,7 +39,12 @@ var Service = {
     },
 
     insert: function(params, callback, sid, req) {
-        console.log("offices->Service->insert");
+        console.log("server->offices->actions->Service->insert");
+        console.log("************************************");
+        console.log("params");
+        console.log(params);
+        console.log("************************************");
+        
         session.verify(req).then(function() {
             return models.sequelize.transaction(function(t) {
                 return models.Office.create(writableFields(params), {
@@ -55,7 +64,12 @@ var Service = {
     },
 
     update: function(params, callback, sid, req) {
-        console.log("offices->Service->update");
+        console.log("server->offices->actions->Service->update");
+        console.log("************************************");
+        console.log("params");
+        console.log(params);
+        console.log("************************************");
+        
         session.verify(req).then(function() {
             if (!params.id) {
                 throw errors.types.invalidParams({
@@ -97,7 +111,12 @@ var Service = {
     },
 
     remove: function(params, callback, sid, req) {
-        console.log("offices->Service->remove");
+        console.log("server->offices->actions->Service->remove");
+        console.log("************************************");
+        console.log("params");
+        console.log(params);
+        console.log("************************************");
+        
         session.verify(req).then(function() {
             throw errors.types.notImplemented();
         }).catch(function(err) {
@@ -106,7 +125,12 @@ var Service = {
     },
 
     filters: function(params, callback, sid, req) {
-        console.log("offices->Service->filters");
+        console.log("server->offices->actions->Service->filters");
+        console.log("************************************");
+        console.log("params");
+        console.log(params);
+        console.log("************************************");
+        
         session.verify(req).then(function() {
             return helpers.fetchFilters(params, models.Office);
         }).then(function(results) {

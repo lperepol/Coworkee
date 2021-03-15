@@ -8,7 +8,11 @@ var models = require('../models');
 
 var Service = {
     list: function(params, callback, sid, req) {
-        console.log("events->Service->list");
+        console.log("server->events->Service->list");
+        console.log("************************************");
+        console.log("params");
+        console.log(params);
+        console.log("************************************");
         
         session.verify(req).then(function() {
             var sequelize = models.sequelize;
@@ -116,7 +120,11 @@ var Service = {
     },
 
     insert: function(params, callback, sid, req) {
-        console.log("events->Service->insert");
+        console.log("server->events->Service->insert");
+        console.log("************************************");
+        console.log("params");
+        console.log(params);
+        console.log("************************************");
         
         session.verify(req).then(function() {
             // NOTE(SB): the direct proxy requires methods for all CRUD actions
@@ -127,7 +135,12 @@ var Service = {
     },
 
     update: function(params, callback, sid, req) {
-        console.log("events->Service->update");
+        console.log("server->events->Service->update");
+        console.log("************************************");
+        console.log("params");
+        console.log(params);
+        console.log("************************************");
+        
         session.verify(req).then(function() {
             // NOTE(SB): the direct proxy requires methods for all CRUD actions
             throw errors.types.notImplemented();
@@ -137,7 +150,12 @@ var Service = {
     },
 
     remove: function(params, callback) {
-        console.log("events->Service->remove");
+        console.log("server->events->Service->remove");
+        console.log("************************************");
+        console.log("params");
+        console.log(params);
+        console.log("************************************");
+        
         session.verify(req).then(function() {
             // NOTE(SB): the direct proxy requires methods for all CRUD actions
             throw errors.types.notImplemented();

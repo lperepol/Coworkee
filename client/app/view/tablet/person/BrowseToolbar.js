@@ -7,7 +7,7 @@ Ext.define('App.view.tablet.person.BrowseToolbar', {
             xtype: 'combobox',
             valueField: 'value',
             displayField: 'label',
-            placeholder: 'All Organizations',
+            placeholder: 'Employees All Organizations',
             queryMode: 'local',
             weight: 11,
             bind: {
@@ -19,7 +19,7 @@ Ext.define('App.view.tablet.person.BrowseToolbar', {
             xtype: 'combobox',
             valueField: 'value',
             displayField: 'label',
-            placeholder: 'All Offices',
+            placeholder: 'Employees All Offices',
             queryMode: 'local',
             weight: 10,
             bind: {

@@ -29,7 +29,11 @@ function writableFields(params) {
 
 var Service = {
     get: function(params, callback, sid, req) {
-        console.log("people->Service->get");
+        console.log("people->actions->Service->get");
+        console.log("************************************");
+        console.log("params");
+        console.log(params);
+        console.log("************************************");
         
         session.verify(req).then(function() {
             var query = params;
@@ -56,7 +60,12 @@ var Service = {
     },
 
     list: function(params, callback, sid, req) {
-        console.log("people->Service->list");
+        console.log("people->actions->Service->list");
+        console.log("************************************");
+        console.log("params");
+        console.log(params);
+        console.log("************************************");
+        
         session.verify(req).then(function() {
             if (params.id) {
                 return models.Person.scope('nested').lookup(params.id).then(function(person) {
@@ -79,7 +88,12 @@ var Service = {
     },
 
     insert: function(params, callback, sid, req) {
-        console.log("people->Service->insert");
+        console.log("people->actions->Service->insert");
+        console.log("************************************");
+        console.log("params");
+        console.log(params);
+        console.log("************************************");
+        
         session.verify(req).then(function() {
             return models.sequelize.transaction(function(t) {
                 return models.Person.create(writableFields(params), {
@@ -99,7 +113,12 @@ var Service = {
     },
 
     update: function(params, callback, sid, req) {
-        console.log("people->Service->update");
+        console.log("people->actions->Service->update");
+        console.log("************************************");
+        console.log("params");
+        console.log(params);
+        console.log("************************************");
+        
         session.verify(req).then(function() {
             if (!params.id) {
                 throw errors.types.invalidParams({
@@ -144,7 +163,12 @@ var Service = {
     },
 
     remove: function(params, callback, sid, req) {
-        console.log("people->Service->remove");
+        console.log("people->actions->Service->remove");
+        console.log("************************************");
+        console.log("params");
+        console.log(params);
+        console.log("************************************");
+        
         session.verify(req).then(function() {
             throw errors.types.notImplemented();
         }).catch(function(err) {
@@ -153,7 +177,12 @@ var Service = {
     },
 
     filters: function(params, callback, sid, req) {
-        console.log("people->Service->remove");
+        console.log("people->actions->Service->remove");
+        console.log("************************************");
+        console.log("params");
+        console.log(params);
+        console.log("************************************");
+        
         session.verify(req).then(function() {
             return helpers.fetchFilters(params, models.Person);
         }).then(function(results) {
@@ -166,7 +195,12 @@ var Service = {
     },
 
     generateUsername: function(params, callback, sid, req) {
-        console.log("people->Service->generateUsername");
+        console.log("people->actions->Service->generateUsername");
+        console.log("************************************");
+        console.log("params");
+        console.log(params);
+        console.log("************************************");
+        
         session.verify(req).then(function() {
             var firstname = params.firstname || undefined;
             if (!firstname) {

@@ -7,7 +7,11 @@ var models = require('../models');
 
 var Service = {
     list: function(params, callback, sid, req) {
-        console.log("actions->Service->list");
+        console.log("server->actions->Service->list");
+        console.log("************************************");
+        console.log("params");
+        console.log(params);
+        console.log("************************************");
 
         session.verify(req).then(function(session) {
             return models.Action.scope('nested').findAndCountAll(
@@ -25,7 +29,11 @@ var Service = {
     },
 
     insert: function(params, callback, sid, req) {
-        console.log("actions->Service->insert");
+        console.log("server->actions->Service->insert");
+        console.log("************************************");
+        console.log("params");
+        console.log(params);
+        console.log("************************************");
 
         session.verify(req).then(function(session) {
             return models.Person.lookup(params.recipient_id).then(function(person) {
@@ -52,7 +60,11 @@ var Service = {
     },
 
     update: function(params, callback, sid, req) {
-        console.log("actions->Service->update");
+        console.log("server->actions->Service->update");
+        console.log("************************************");
+        console.log("params");
+        console.log(params);
+        console.log("************************************");
         
         session.verify(req).then(function() {
             // NOTE(SB): the direct proxy requires methods for all CRUD actions
@@ -63,7 +75,11 @@ var Service = {
     },
 
     remove: function(params, callback, sid, req) {
-        console.log("actions->Service->remove");
+        console.log("server->actions->Service->remove");
+        console.log("************************************");
+        console.log("params");
+        console.log(params);
+        console.log("************************************");
         
         session.verify(req).then(function() {
             var ids = helpers.idsFromParams(params);
@@ -86,7 +102,11 @@ var Service = {
     },
 
     filters: function(params, callback, sid, req) {
-        console.log("actions->Service->filters");
+        console.log("server->actions->Service->filters");
+        console.log("************************************");
+        console.log("params");
+        console.log(params);
+        console.log("************************************");
         
         
         session.verify(req).then(function(session) {
